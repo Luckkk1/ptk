@@ -1,0 +1,47 @@
+.colorBox {
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 20%;
+  height: 10em;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3%;
+}
+
+.title input {
+  font-size: 1.2rem;
+  width: 10em;
+}
+
+.boxList {
+  display: flex;
+  height: 100%;
+}
+
+.boxList div {
+  height: 100%;
+  width: 100%;
+}
+
+.boxList div:first-child {
+  border-radius: 0 0 0 10px;
+}
+
+.boxList div:last-child {
+  border-radius: 0 0 10px 0;
+}
+
+.btnControl {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.colorBox button {
+  cursor: pointer;
+  width: 10em;
+  height: 3em;
+}
