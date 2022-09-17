@@ -1,5 +1,4 @@
 import { Provider } from 'react-redux';
-import Head from 'next/head';
 
 import Layout from '../src/components/layout/Layout';
 import store from '../src/store/index';

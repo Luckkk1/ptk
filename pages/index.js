@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb';
+import Head from 'next/head';
 
 import ColorBox from '../src/components/colorbox/ColorBox';
 import ColorList from '../src/components/colorList/ColorList';
