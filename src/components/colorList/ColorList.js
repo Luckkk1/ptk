@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 import ColorEle from './ColorEle';

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import classes from './ColorEle.module.css';
 import { colorActions } from '../../store/color-slice';

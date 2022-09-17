@@ -16,7 +16,7 @@ const Layout = props => {
     return () => {
       clearTimeout(reset);
     };
-  }, [isCopied]);
+  }, [isCopied, dispatch, colorActions]);
   return (
     <div>
       <Header />
