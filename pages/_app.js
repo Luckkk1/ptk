@@ -1,11 +1,28 @@
+import { Provider } from 'react-redux';
+import Head from 'next/head';
+
 import Layout from '../src/components/layout/Layout';
+import store from '../src/store/index';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Provider store={store}>
+      <Head>
+        <title>
+          Pick The Color | Color palette that finds the opposite color
+        </title>
+        <meta name="author" content="Ys Lee" />
+        <meta
+          name="description"
+          content="Share your own color palette with a simple color picker."
+        />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
   );
 }
 

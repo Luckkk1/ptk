@@ -1,4 +1,6 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { colorActions } from '../../store/color-slice';
 
 import classes from './MakeSet.module.css';
 
@@ -24,9 +26,14 @@ function rgbToOpp(r, g, b) {
 }
 
 const MakeSet = () => {
-  const [rgb, setRgb] = useState('');
-  const [rgbHex, setRgbHex] = useState('');
-  const [opp, setOpp] = useState('');
+  const [rgb, setRgb] = useState('0, 0, 0');
+  const [rgbHex, setRgbHex] = useState('#000000');
+  const [opp, setOpp] = useState('#ffffff');
+  const [error, setError] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const setArr = useSelector(state => state.colorList);
 
   const rgbTextChangeHandler = e => {
     const rgbArr = e.target.value.split(',').map(e => +e.trim());
@@ -35,6 +42,7 @@ const MakeSet = () => {
     setOpp(rgbToOpp(rgbArr[0], rgbArr[1], rgbArr[2]));
     if (e.target.value === '') {
       setRgbHex('');
+      setOpp('');
     }
   };
 
@@ -47,12 +55,17 @@ const MakeSet = () => {
   };
 
   const hexTextChangeHandler = e => {
-    const rgbArr = rgb.split(',').map(e => +e.trim());
+    const rgbArr = hexToRgb(e.target.value)
+      ? hexToRgb(e.target.value)
+          .split(',')
+          .map(e => +e.trim())
+      : '';
     setRgbHex(e.target.value);
     setRgb(hexToRgb(e.target.value));
     setOpp(rgbToOpp(rgbArr[0], rgbArr[1], rgbArr[2]));
     if (e.target.value === '') {
       setRgb('');
+      setOpp('');
     }
   };
 
@@ -62,6 +75,33 @@ const MakeSet = () => {
     setRgbHex(e.target.value);
     setOpp(rgbToOpp(rgbArr[0], rgbArr[1], rgbArr[2]));
   };
+
+  const btnClickHandler = () => {
+    if (setArr.length < 10 && !setArr.includes(rgbHex)) {
+      dispatch(colorActions.addToList(rgbHex));
+    } else {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    }
+  };
+
+  const oppChangeClickHandler = e => {
+    const inputValue = e.target.parentElement.children[1].value;
+    const rgb = hexToRgb(inputValue);
+    const rgbArr = rgb.split(',').map(e => +e.trim());
+    const hex = rgbToHex(rgbArr[0], rgbArr[1], rgbArr[2]);
+    const opp = rgbToOpp(rgbArr[0], rgbArr[1], rgbArr[2]);
+    setRgb(rgb);
+    setRgbHex(hex);
+    setOpp(opp);
+  };
+
+  let errMsg =
+    error && setArr.length > 10
+      ? 'The color set is full.'
+      : 'The same color is not allowed.';
 
   return (
     <section className={classes.makeSet}>
@@ -75,14 +115,23 @@ const MakeSet = () => {
         <input type="text" onChange={hexTextChangeHandler} value={rgbHex} />
         <input type="color" onChange={hexColorChangeHandler} value={rgbHex} />
       </div>
-      <div className={classes.colorControl}>
+      <div className={`${classes.colorControl} ${classes.oppBox}`}>
         <h3>OPP</h3>
-        <input type="text" value={opp} disabled />
-        <input type="color" value={opp} disabled />
+        <input
+          type="text"
+          value={opp}
+          readOnly
+          onClick={oppChangeClickHandler}
+        />
+        <input type="color" value={opp} readOnly disabled />
       </div>
       <div className={classes.btnControl}>
-        <button>Put</button>
-        <p>Share your own Color Set with others.</p>
+        <button onClick={btnClickHandler}>Put</button>
+        {error ? (
+          <p style={{ color: '#e65b5b' }}>{errMsg}</p>
+        ) : (
+          <p>Share your own Color Set with others.</p>
+        )}
       </div>
     </section>
   );

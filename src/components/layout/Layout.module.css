@@ -1,0 +1,52 @@
+.inform {
+  position: fixed;
+  background-color: black;
+  color: #e5e5e5;
+  padding: 0 1%;
+  padding-left: 2%;
+  border-radius: 500px 0 0 100px;
+  bottom: 4em;
+  right: -13em;
+  height: 3em;
+  width: 13em;
+  z-index: 20;
+}
+
+.inform.flying {
+  animation: pass 4.5s;
+}
+
+.inform p {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 10em;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@keyframes pass {
+  0% {
+    right: 0em;
+  }
+
+  30% {
+    right: 43%;
+  }
+
+  60% {
+    right: 43%;
+  }
+
+  100% {
+    right: 130%;
+  }
+}

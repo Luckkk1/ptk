@@ -2,7 +2,7 @@ html {
   padding: 0;
 }
 body {
-  padding: 0 10%;
+  padding: 0 5%;
   margin: 0;
   background-color: #e5e5e5;
 }
@@ -14,4 +14,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    padding: 0 2%;
+  }
 }
