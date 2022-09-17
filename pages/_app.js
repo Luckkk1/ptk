@@ -12,6 +12,10 @@ function MyApp({ Component, pageProps }) {
         <title>
           Pick The Color | Color palette that finds the opposite color
         </title>
+        <meta
+          name="google-site-verification"
+          content="aj3LlJ97q8xn0V6bc60sO1gTDg4PYSrgyJSIROzeF8E"
+        />
         <meta name="author" content="Ys Lee" />
         <meta
           name="description"
