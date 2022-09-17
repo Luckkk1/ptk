@@ -21,7 +21,7 @@ const Layout = props => {
     <div>
       <Header />
       <div className={`${classes.inform} ${isCopied ? classes.flying : ''}`}>
-        <p>Copy's complete, buddy</p>
+        <p>Copy is finished, buddy</p>
       </div>
       <main>{props.children}</main>
       <footer className={classes.footer}>
