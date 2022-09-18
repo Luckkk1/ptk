@@ -90,7 +90,9 @@ const MakeSet = () => {
   };
 
   const oppChangeClickHandler = e => {
+    const input = document.querySelector('.oppInput');
     e.preventDefault();
+    if (input.value === '') return;
     const inputValue = e.target.parentElement.children[1].value;
     const rgb = hexToRgb(inputValue);
     const rgbArr = rgb.split(',').map(e => +e.trim());
@@ -110,12 +112,22 @@ const MakeSet = () => {
     <section className={classes.makeSet}>
       <div className={classes.colorControl}>
         <h3>RGB</h3>
-        <input type="text" onChange={rgbTextChangeHandler} value={rgb} />
+        <input
+          type="text"
+          onChange={rgbTextChangeHandler}
+          value={rgb}
+          placeholder="0, 0, 0"
+        />
         <input type="color" onChange={rgbColorChangeHandler} value={rgbHex} />
       </div>
       <div className={classes.colorControl}>
         <h3>HEX</h3>
-        <input type="text" onChange={hexTextChangeHandler} value={rgbHex} />
+        <input
+          type="text"
+          onChange={hexTextChangeHandler}
+          value={rgbHex}
+          placeholder="#000000"
+        />
         <input type="color" onChange={hexColorChangeHandler} value={rgbHex} />
       </div>
       <div className={`${classes.colorControl} ${classes.oppBox}`}>
@@ -125,6 +137,8 @@ const MakeSet = () => {
           value={opp}
           readOnly
           onClick={oppChangeClickHandler}
+          placeholder="#ffffff"
+          className="oppInput"
         />
         <input
           type="color"
@@ -135,7 +149,9 @@ const MakeSet = () => {
         />
       </div>
       <div className={classes.btnControl}>
-        <button onClick={btnClickHandler}>Put</button>
+        <button onClick={btnClickHandler}>
+          <p>Put</p>
+        </button>
         {error ? (
           <p style={{ color: '#e65b5b' }}>{errMsg}</p>
         ) : (

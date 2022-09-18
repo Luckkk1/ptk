@@ -56,7 +56,16 @@ const handler = async (req, res) => {
 
     const colorSetCollection = db.collection('colorSet');
 
-    const colorSet = await colorSetCollection.find().toArray();
+    let colorSet = await colorSetCollection.find().toArray();
+
+    colorSet = colorSet
+      .map(set => ({
+        title: set.title,
+        id: set._id.toString(),
+        colors: set.colors,
+        like: set.like,
+      }))
+      .sort((a, b) => b.like - a.like);
 
     client.close();
 

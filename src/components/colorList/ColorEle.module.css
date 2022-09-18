@@ -27,6 +27,7 @@
   font-size: 1rem;
   flex-basis: 35%;
   cursor: pointer;
+  color: #adb5bd;
 }
 
 .title p svg {

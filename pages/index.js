@@ -1,14 +1,16 @@
 import { MongoClient } from 'mongodb';
 import Head from 'next/head';
-import Script from 'next/script';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import ColorBox from '../src/components/colorbox/ColorBox';
 import ColorList from '../src/components/colorList/ColorList';
 import MakeSet from '../src/components/makeSet/MakeSet';
+import { colorActions } from '../src/store/color-slice';
 
 export default function Home(props) {
-  const [colors, setColors] = useState(props.colorSet);
+  // const [colors, setColors] = useState(props.colorSet);
+  const dispatch = useDispatch();
 
   const postColorSet = async colorSet => {
     const res = await fetch('./api/newColorSet', {
@@ -34,9 +36,15 @@ export default function Home(props) {
   const getColorSet = async () => {
     const res = await fetch('./api/newColorSet', { method: 'GET' });
     const data = await res.json();
-    data.sort((a, b) => b.like - a.like);
-    setColors(data);
+
+    data.colorSet.sort((a, b) => b.like - a.like);
+    // setColors(data);
+    dispatch(colorActions.setMainList(data.colorSet));
   };
+
+  useEffect(() => {
+    dispatch(colorActions.setMainList(props.colorSet));
+  }, [dispatch]);
 
   return (
     <div>
@@ -57,7 +65,7 @@ export default function Home(props) {
       </Head>
       <MakeSet />
       <ColorBox onPostColorSet={postColorSet} onGetColorSet={getColorSet} />
-      <ColorList onLikeUp={likeUp} colors={colors} />
+      <ColorList onLikeUp={likeUp} />
     </div>
   );
 }

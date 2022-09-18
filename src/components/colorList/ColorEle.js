@@ -42,6 +42,7 @@ const ColorEle = props => {
         ? e.target.parentNode.dataset.id
         : e.target.parentNode.parentNode.id;
 
+    console.log(value);
     props.onLikeUp(value);
     setNewLikes(prev => (prev += 1));
   };
@@ -60,7 +61,7 @@ const ColorEle = props => {
           const rgb = hexToRgb(hex);
           const rgbArr = rgb.split(',').map(e => +e.trim());
           const [r, g, b] = rgbArr;
-          let key = 'cc' + i;
+          let key = 'cc' + i + `${Math.random(i)}`;
           return (
             <div
               className={classes.color}

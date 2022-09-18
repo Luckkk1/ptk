@@ -42,6 +42,7 @@ const ColorBox = props => {
         colors: mostBright,
         like: 0,
       });
+      props.onGetColorSet();
       dispatch(colorActions.setSubmitTrue());
       dispatch(colorActions.resetList());
       titleRef.current.value = '';
