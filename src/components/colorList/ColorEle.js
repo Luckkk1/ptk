@@ -64,12 +64,12 @@ const ColorEle = props => {
           return (
             <div
               className={classes.color}
+              key={key}
               style={{
                 backgroundColor: hex,
                 color: r + g + b > 400 ? '#011627' : 'white',
               }}
               onClick={copyClickHandler}
-              key={key}
             >
               <p>{success ? 'Copied!' : hex.toUpperCase()}</p>
             </div>

@@ -47,6 +47,21 @@ const handler = async (req, res) => {
 
     res.status(201).json({ message: 'Like 1+' });
   }
+  if (req.method === 'GET') {
+    const client = await MongoClient.connect(
+      'mongodb+srv://ysLee:4P7m0iViVrrr27eu@pickthecolor.mveb3q5.mongodb.net/colorSet?retryWrites=true&w=majority'
+    );
+
+    const db = client.db();
+
+    const colorSetCollection = db.collection('colorSet');
+
+    const colorSet = await colorSetCollection.find().toArray();
+
+    client.close();
+
+    return res.status(200).json({ colorSet });
+  }
 };
 
 export default handler;

@@ -25,6 +25,12 @@ const ColorBox = props => {
   const colorArr = useSelector(state => state.colorList);
   const mostBright = hexSorter.sortColors(colorArr, 'mostBrightColor');
 
+  const getColorSet = async () => {
+    const res = await fetch('./api/newColorSet', { method: 'GET' });
+    const data = await res.json();
+    dispatch(colorActions.setMainList(data.colorSet));
+  };
+
   const submitSetHandler = () => {
     if (
       mostBright.length > 4 &&
@@ -39,6 +45,8 @@ const ColorBox = props => {
       dispatch(colorActions.setSubmitTrue());
       dispatch(colorActions.resetList());
       titleRef.current.value = '';
+
+      getColorSet();
     } else {
       setError(true);
       setTimeout(() => {

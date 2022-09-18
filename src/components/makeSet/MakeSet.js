@@ -70,7 +70,9 @@ const MakeSet = () => {
   };
 
   const hexColorChangeHandler = e => {
-    const rgbArr = rgb.split(',').map(e => +e.trim());
+    const rgbArr = hexToRgb(e.target.value)
+      .split(',')
+      .map(e => +e.trim());
     setRgb(hexToRgb(e.target.value));
     setRgbHex(e.target.value);
     setOpp(rgbToOpp(rgbArr[0], rgbArr[1], rgbArr[2]));
@@ -98,10 +100,6 @@ const MakeSet = () => {
     setRgbHex(hex);
     setOpp(opp);
   };
-
-  // const colorClickChangeHandler = e => {
-  //   e.preventDefault();
-  // };
 
   let errMsg =
     error && setArr.length > 10

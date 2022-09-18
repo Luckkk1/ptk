@@ -8,6 +8,8 @@ import ColorList from '../src/components/colorList/ColorList';
 import MakeSet from '../src/components/makeSet/MakeSet';
 
 export default function Home(props) {
+  const [colors, setColors] = useState(props.colorSet);
+
   const postColorSet = async colorSet => {
     const res = await fetch('./api/newColorSet', {
       method: 'POST',
@@ -27,6 +29,13 @@ export default function Home(props) {
       },
     });
     const data = await res.json();
+  };
+
+  const getColorSet = async () => {
+    const res = await fetch('./api/newColorSet', { method: 'GET' });
+    const data = await res.json();
+    data.sort((a, b) => b.like - a.like);
+    setColors(data);
   };
 
   return (
@@ -57,8 +66,8 @@ export default function Home(props) {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
       />
       <MakeSet />
-      <ColorBox onPostColorSet={postColorSet} />
-      <ColorList onLikeUp={likeUp} colors={props.colorSet} />
+      <ColorBox onPostColorSet={postColorSet} onGetColorSet={getColorSet} />
+      <ColorList onLikeUp={likeUp} colors={colors} />
     </div>
   );
 }
@@ -72,7 +81,9 @@ export const getStaticProps = async () => {
 
   const colorSetCollection = db.collection('colorSet');
 
-  const colorSet = await colorSetCollection.find().toArray();
+  let colorSet = await colorSetCollection.find().toArray();
+
+  colorSet.sort((a, b) => b.like - a.like);
 
   client.close();
 

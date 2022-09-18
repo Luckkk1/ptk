@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   colorList: [],
+  mainList: [],
   copied: false,
   submitted: false,
 };
@@ -27,6 +28,9 @@ const colorSlice = createSlice({
     },
     setSubmitFalse(state) {
       state.submitted = false;
+    },
+    setMainList(state, action) {
+      state.mainList = action.payload;
     },
   },
 });
