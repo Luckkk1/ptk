@@ -13,7 +13,7 @@ const ColorList = props => {
 
   useEffect(() => {
     setColors(props.colors.sort((a, b) => b.like - a.like));
-  }, []);
+  }, [props.colors]);
 
   return (
     <ResponsiveMasonry

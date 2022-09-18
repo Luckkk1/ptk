@@ -45,17 +45,17 @@ export default function Home(props) {
           content="Share your own color palette with a simple color picker."
         />
         <link rel="icon" href="/favicon.png" />
-        <Script
-          id="Adsense-id"
-          data-ad-client="ca-pub-4054131061164028"
-          async
-          strategy="afterInteractive"
-          onError={e => {
-            console.error('Script failed to load', e);
-          }}
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        />
       </Head>
+      <Script
+        id="Adsense-id"
+        data-ad-client="ca-pub-4054131061164028"
+        async
+        strategy="afterInteractive"
+        onError={e => {
+          console.error('Script failed to load', e);
+        }}
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      />
       <MakeSet />
       <ColorBox onPostColorSet={postColorSet} />
       <ColorList onLikeUp={likeUp} colors={props.colorSet} />

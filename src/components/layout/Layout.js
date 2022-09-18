@@ -27,7 +27,6 @@ const Layout = props => {
       clearTimeout(reset);
     };
   }, [isSubmitted, dispatch]);
-  console.log(isSubmitted);
   return (
     <div>
       <Header />
