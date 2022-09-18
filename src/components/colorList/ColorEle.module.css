@@ -72,3 +72,9 @@
   position: absolute;
   display: none;
 }
+
+@media screen and (max-width: 1024px) {
+  .title h3 {
+    font-size: 1rem;
+  }
+}

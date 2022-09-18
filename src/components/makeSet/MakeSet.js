@@ -26,9 +26,9 @@ function rgbToOpp(r, g, b) {
 }
 
 const MakeSet = () => {
-  const [rgb, setRgb] = useState('0, 0, 0');
-  const [rgbHex, setRgbHex] = useState('#000000');
-  const [opp, setOpp] = useState('#ffffff');
+  const [rgb, setRgb] = useState('');
+  const [rgbHex, setRgbHex] = useState('');
+  const [opp, setOpp] = useState('');
   const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
