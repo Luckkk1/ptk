@@ -41,22 +41,8 @@ const App = ({ Component, pageProps }) => {
             gtag('config', '${gtag.GA_TRACKING_ID}', {
               page_path: window.location.pathname,
             });
+            gtag('config', 'ca-pub-4054131061164028');
           `,
-        }}
-      />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${gtag.GA_TRACKING_ID}', {
-      page_path: window.location.pathname,
-      });
-      gtag('config', 'ca-pub-4054131061164028'); <-
-      `,
         }}
       />
       <Provider store={store}>
