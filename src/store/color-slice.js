@@ -13,6 +13,9 @@ const colorSlice = createSlice({
     addToList(state, action) {
       state.colorList.push(action.payload);
     },
+    resetList(state) {
+      state.colorList = [];
+    },
     setCopiedTrue(state) {
       state.copied = true;
     },

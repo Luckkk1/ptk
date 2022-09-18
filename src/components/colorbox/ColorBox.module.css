@@ -22,6 +22,17 @@
   text-align: center;
 }
 
+.reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset button {
+  margin-left: 1em;
+  font-size: 1rem;
+}
+
 .boxList {
   display: flex;
   height: 11em;
@@ -72,6 +83,8 @@
   cursor: pointer;
   width: 12em;
   height: 4em;
+  background-color: #f5f3f4;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 480px) {

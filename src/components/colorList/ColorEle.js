@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCat } from '@fortawesome/free-solid-svg-icons';
+
 import classes from './ColorEle.module.css';
 import { colorActions } from '../../store/color-slice';
 
@@ -33,8 +36,13 @@ const ColorEle = props => {
     }, 400);
   };
 
-  const likeUpClickHandler = async e => {
-    props.onLikeUp(e.target.parentNode.parentNode.id);
+  const likeUpClickHandler = e => {
+    let value =
+      e.target.nodeName === 'path'
+        ? e.target.parentNode.dataset.id
+        : e.target.parentNode.parentNode.id;
+
+    props.onLikeUp(value);
     setNewLikes(prev => (prev += 1));
   };
 
@@ -42,7 +50,10 @@ const ColorEle = props => {
     <div className={classes.ele} id={props.id}>
       <div className={classes.title}>
         <h3>{props.title}</h3>
-        <p onClick={likeUpClickHandler}>Likes: {newLikes}</p>
+        <p onClick={likeUpClickHandler}>
+          <FontAwesomeIcon icon={faCat} data-id={props.id} />
+          {newLikes}
+        </p>
       </div>
       <div className={classes.list}>
         {props.colors.map((hex, i) => {
@@ -55,12 +66,12 @@ const ColorEle = props => {
               className={classes.color}
               style={{
                 backgroundColor: hex,
-                color: r + g + b > 250 ? '#011627' : 'white',
+                color: r + g + b > 400 ? '#011627' : 'white',
               }}
               onClick={copyClickHandler}
               key={key}
             >
-              <p>{success ? 'Copied!' : hex}</p>
+              <p>{success ? 'Copied!' : hex.toUpperCase()}</p>
             </div>
           );
         })}

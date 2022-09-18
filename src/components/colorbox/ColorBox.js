@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useRef, useState } from 'react';
 import hexSorter from 'hexsorter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 
 import classes from './ColorBox.module.css';
 import { colorActions } from '../../store/color-slice';
@@ -35,6 +37,8 @@ const ColorBox = props => {
         like: 0,
       });
       dispatch(colorActions.setSubmitTrue());
+      dispatch(colorActions.resetList());
+      titleRef.current.value = '';
     } else {
       setError(true);
       setTimeout(() => {
@@ -55,6 +59,11 @@ const ColorBox = props => {
     setTimeout(() => {
       setSuccess(false);
     }, 2000);
+  };
+
+  const resetClickHandler = () => {
+    dispatch(colorActions.resetList());
+    titleRef.current.value = '';
   };
 
   const content =
@@ -83,7 +92,12 @@ const ColorBox = props => {
     <section className={classes.colorBox}>
       <div className={classes.title}>
         <input type="text" placeholder="Title" ref={titleRef} />
-        <p>Limit 5 to 10</p>
+        <div className={classes.reset}>
+          <p>Limit 5 to 10</p>
+          <button onClick={resetClickHandler}>
+            <FontAwesomeIcon icon={faRotateRight} />
+          </button>
+        </div>
       </div>
       <div className={classes.boxList}>{content}</div>
       <div className={classes.btnControl}>

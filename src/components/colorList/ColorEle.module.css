@@ -17,12 +17,31 @@
   justify-content: space-between;
 }
 
+.title h3 {
+  word-break: break-all;
+}
+
 .title p {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1rem;
+  flex-basis: 35%;
   cursor: pointer;
+}
+
+.title p svg {
+  width: 1em;
+  margin-right: 0.2em;
 }
 
 .title p:hover {
   color: #e67575;
+}
+
+.title h3,
+.title p {
+  margin-top: 0.5em;
 }
 
 .list {
@@ -36,6 +55,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 50ms linear;
+}
+
+.list div:hover {
+  transform: scale(1.1);
 }
 
 .list div:hover p {

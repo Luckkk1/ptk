@@ -20,6 +20,12 @@ a {
   box-sizing: border-box;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 480px) {
   body {
     padding: 0 2%;
