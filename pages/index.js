@@ -55,16 +55,6 @@ export default function Home(props) {
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Script
-        id="Adsense-id"
-        data-ad-client="ca-pub-4054131061164028"
-        async
-        strategy="afterInteractive"
-        onError={e => {
-          console.error('Script failed to load', e);
-        }}
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-      />
       <MakeSet />
       <ColorBox onPostColorSet={postColorSet} onGetColorSet={getColorSet} />
       <ColorList onLikeUp={likeUp} colors={colors} />
