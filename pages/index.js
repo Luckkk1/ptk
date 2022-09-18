@@ -1,6 +1,7 @@
 import { MongoClient } from 'mongodb';
 import Head from 'next/head';
 import Script from 'next/script';
+import { useState } from 'react';
 
 import ColorBox from '../src/components/colorbox/ColorBox';
 import ColorList from '../src/components/colorList/ColorList';
@@ -17,7 +18,6 @@ export default function Home(props) {
     });
     const data = await res.json();
   };
-
   const likeUp = async id => {
     const res = await fetch('./api/newColorSet', {
       method: 'PUT',

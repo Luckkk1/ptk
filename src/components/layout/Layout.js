@@ -8,6 +8,7 @@ import classes from './Layout.module.css';
 const Layout = props => {
   const dispatch = useDispatch();
   const isCopied = useSelector(state => state.copied);
+  const isSubmitted = useSelector(state => state.submitted);
 
   useEffect(() => {
     const reset = setTimeout(() => {
@@ -17,11 +18,27 @@ const Layout = props => {
       clearTimeout(reset);
     };
   }, [isCopied, dispatch]);
+
+  useEffect(() => {
+    const reset = setTimeout(() => {
+      dispatch(colorActions.setSubmitFalse());
+    }, 4000);
+    return () => {
+      clearTimeout(reset);
+    };
+  }, [isSubmitted, dispatch]);
+  console.log(isSubmitted);
   return (
     <div>
       <Header />
-      <div className={`${classes.inform} ${isCopied ? classes.flying : ''}`}>
-        <p>Copy is finished, buddy</p>
+      <div
+        className={`${classes.inform} ${
+          isCopied || isSubmitted ? classes.flying : ''
+        }`}
+      >
+        <p>
+          {isSubmitted ? 'Submission completed.' : 'Copy is finished, buddy'}
+        </p>
       </div>
       <main>{props.children}</main>
       <footer className={classes.footer}>

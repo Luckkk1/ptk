@@ -52,6 +52,7 @@ const ColorEle = props => {
           let key = 'cc' + i;
           return (
             <div
+              className={classes.color}
               style={{
                 backgroundColor: hex,
                 color: r + g + b > 250 ? '#011627' : 'white',

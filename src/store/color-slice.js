@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   colorList: [],
   copied: false,
+  submitted: false,
 };
 
 const colorSlice = createSlice({
@@ -17,6 +18,12 @@ const colorSlice = createSlice({
     },
     setCopiedFalse(state) {
       state.copied = false;
+    },
+    setSubmitTrue(state) {
+      state.submitted = true;
+    },
+    setSubmitFalse(state) {
+      state.submitted = false;
     },
   },
 });

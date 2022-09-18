@@ -34,6 +34,7 @@ const ColorBox = props => {
         colors: mostBright,
         like: 0,
       });
+      dispatch(colorActions.setSubmitTrue());
     } else {
       setError(true);
       setTimeout(() => {

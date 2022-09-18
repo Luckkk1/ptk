@@ -88,6 +88,7 @@ const MakeSet = () => {
   };
 
   const oppChangeClickHandler = e => {
+    e.preventDefault();
     const inputValue = e.target.parentElement.children[1].value;
     const rgb = hexToRgb(inputValue);
     const rgbArr = rgb.split(',').map(e => +e.trim());
@@ -97,6 +98,10 @@ const MakeSet = () => {
     setRgbHex(hex);
     setOpp(opp);
   };
+
+  // const colorClickChangeHandler = e => {
+  //   e.preventDefault();
+  // };
 
   let errMsg =
     error && setArr.length > 10
@@ -123,7 +128,13 @@ const MakeSet = () => {
           readOnly
           onClick={oppChangeClickHandler}
         />
-        <input type="color" value={opp} readOnly disabled />
+        <input
+          type="color"
+          value={opp}
+          onClick={oppChangeClickHandler}
+          readOnly
+          // disabled
+        />
       </div>
       <div className={classes.btnControl}>
         <button onClick={btnClickHandler}>Put</button>
