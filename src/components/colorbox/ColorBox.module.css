@@ -29,8 +29,14 @@
 }
 
 .reset button {
+  display: flex;
+  align-items: center;
   margin-left: 1em;
   font-size: 1rem;
+}
+
+.reset button svg {
+  height: 1em;
 }
 
 .boxList {
@@ -99,6 +105,10 @@
   .title p {
     font-size: 0.8rem;
     margin-right: 0.5em;
+  }
+
+  .reset button {
+    margin-left: 0;
   }
 }
 
