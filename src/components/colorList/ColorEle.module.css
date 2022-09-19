@@ -56,7 +56,12 @@
   justify-content: center;
   align-items: center;
   transition: all 50ms linear;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.list div:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .list div:hover {

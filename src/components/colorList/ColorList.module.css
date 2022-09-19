@@ -1,6 +1,7 @@
 .colorList {
   display: flex;
   /* flex-wrap: wrap; */
+  padding: 0 5%;
   height: 100%;
   margin-top: 13em;
 }

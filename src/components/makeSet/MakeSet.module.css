@@ -58,6 +58,7 @@
   position: relative;
   background-color: #209bf2;
   border-radius: 10px;
+  color: #f1faee;
 }
 
 .oppBox input {
@@ -81,10 +82,27 @@
   }
 
   .colorControl button {
+    display: flex;
     font-size: 0.5rem;
     height: 3em;
     bottom: -5em;
     right: 2%;
+  }
+
+  .btnControl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btnControl button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6em;
+    height: 2em;
+    margin: 0;
   }
 }
 
@@ -107,5 +125,20 @@
     font-size: 0.5rem;
     bottom: -10em;
     height: 3em;
+  }
+  .btnControl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btnControl button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6em;
+    height: 2em;
+    margin: 0;
   }
 }

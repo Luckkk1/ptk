@@ -1,4 +1,20 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .header__H2 {
   font-weight: 700;
   color: #209bf2;
+  margin-left: 2%;
+  cursor: pointer;
+}
+
+.head a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ee6c4d;
+  margin-right: 2%;
 }

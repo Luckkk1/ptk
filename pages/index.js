@@ -1,27 +1,15 @@
 import { MongoClient } from 'mongodb';
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
-import ColorBox from '../src/components/colorbox/ColorBox';
-import ColorList from '../src/components/colorList/ColorList';
-import MakeSet from '../src/components/makeSet/MakeSet';
 import { colorActions } from '../src/store/color-slice';
 
+import Intro from '../src/components/layout/Intro';
+import ColorList from '../src/components/colorList/ColorList';
+
 export default function Home(props) {
-  // const [colors, setColors] = useState(props.colorSet);
   const dispatch = useDispatch();
 
-  const postColorSet = async colorSet => {
-    const res = await fetch('./api/newColorSet', {
-      method: 'POST',
-      body: JSON.stringify(colorSet),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await res.json();
-  };
   const likeUp = async id => {
     const res = await fetch('./api/newColorSet', {
       method: 'PUT',
@@ -33,15 +21,6 @@ export default function Home(props) {
     const data = await res.json();
   };
 
-  const getColorSet = async () => {
-    const res = await fetch('./api/newColorSet', { method: 'GET' });
-    const data = await res.json();
-
-    data.colorSet.sort((a, b) => b.like - a.like);
-    // setColors(data);
-    dispatch(colorActions.setMainList(data.colorSet));
-  };
-
   useEffect(() => {
     dispatch(colorActions.setMainList(props.colorSet));
   }, [dispatch]);
@@ -50,7 +29,7 @@ export default function Home(props) {
     <div>
       <Head>
         <title>
-          Pick The Color | Color palette that finds the opposite color
+          Pick The Color | Color palette for CSS users and Designers
         </title>
         <meta
           name="google-site-verification"
@@ -59,12 +38,11 @@ export default function Home(props) {
         <meta name="author" content="Ys Lee" />
         <meta
           name="description"
-          content="Share your own color palette with a simple color picker."
+          content="Get inspiration from colorful waterfalls! Use the color palette of various movies and brand themes."
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <MakeSet />
-      <ColorBox onPostColorSet={postColorSet} onGetColorSet={getColorSet} />
+      <Intro />
       <ColorList onLikeUp={likeUp} />
     </div>
   );
