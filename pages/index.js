@@ -22,7 +22,7 @@ export default function Home(props) {
 
   useEffect(() => {
     dispatch(colorActions.setMainList(props.colorSet));
-  }, [dispatch]);
+  }, [dispatch, props.colorSet]);
 
   return (
     <div>
