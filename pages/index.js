@@ -71,6 +71,5 @@ export const getServerSideProps = async () => {
         like: set.like,
       })),
     },
-    revalidate: 1,
   };
 };
