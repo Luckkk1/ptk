@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId } from 'mongodb';
 
 const handler = async (req, res) => {
-  const MONGODBKEY = process.env.REACT_APP_MONGODB_KEY;
+  const MONGODBKEY = process.env.MONGODB_KEY;
 
   if (req.method === 'POST') {
     const data = req.body;
