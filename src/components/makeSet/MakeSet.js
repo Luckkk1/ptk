@@ -79,7 +79,7 @@ const MakeSet = () => {
   };
 
   const btnClickHandler = () => {
-    if (setArr.length < 10 && !setArr.includes(rgbHex)) {
+    if (setArr.length < 10 && setArr.length > 0 && !setArr.includes(rgbHex)) {
       dispatch(colorActions.addToList(rgbHex));
     } else {
       setError(true);
@@ -107,6 +107,8 @@ const MakeSet = () => {
     error && setArr.length > 10
       ? 'The color set is full.'
       : 'The same color is not allowed.';
+
+  if (setArr.length <= 0) errMsg = 'Select Color';
 
   return (
     <section className={classes.makeSet}>
