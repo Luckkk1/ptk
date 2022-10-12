@@ -42,7 +42,6 @@ const ColorEle = props => {
         ? e.target.parentNode.dataset.id
         : e.target.parentNode.parentNode.id;
 
-    console.log(value);
     props.onLikeUp(value);
     setNewLikes(prev => (prev += 1));
   };

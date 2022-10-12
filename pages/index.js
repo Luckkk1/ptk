@@ -47,7 +47,7 @@ export default function Home(props) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const client = await MongoClient.connect(
     'mongodb+srv://ysLee:4P7m0iViVrrr27eu@pickthecolor.mveb3q5.mongodb.net/colorSet?retryWrites=true&w=majority'
   );
@@ -71,5 +71,6 @@ export const getServerSideProps = async () => {
         like: set.like,
       })),
     },
+    revalidate: 1,
   };
 };
