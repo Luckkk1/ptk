@@ -48,10 +48,12 @@ export default function Home(props) {
 }
 
 const MONGODBKEY = process.env.REACT_APP_MONGODB_KEY;
+export async function loadKey() {
+  return MONGODBKEY;
+}
+
 export const getStaticProps = async () => {
-  const client = await MongoClient.connect(
-    'mongodb+srv://ysLee:4P7m0iViVrrr27eu@pickthecolor.mveb3q5.mongodb.net/colorSet?retryWrites=true&w=majority'
-  );
+  const client = await MongoClient.connect(loadKey());
 
   const db = client.db();
 
