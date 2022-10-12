@@ -79,7 +79,7 @@ const MakeSet = () => {
   };
 
   const btnClickHandler = () => {
-    if (setArr.length < 10 && setArr.length > 0 && !setArr.includes(rgbHex)) {
+    if (setArr.length < 10 && !setArr.includes(rgbHex) && rgb) {
       dispatch(colorActions.addToList(rgbHex));
     } else {
       setError(true);
