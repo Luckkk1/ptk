@@ -3,3 +3,12 @@
   margin-top: 3em;
   font-size: 2rem;
 }
+
+.introSection input {
+  width: 20em;
+  height: 3em;
+  padding: 1em 0.5em;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #adb5bd;
+}

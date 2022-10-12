@@ -32,6 +32,10 @@ const colorSlice = createSlice({
     setMainList(state, action) {
       state.mainList = action.payload;
     },
+    mainListFilter(state, action) {
+      let keyword = action.payload.trim().toLowerCase();
+      state.mainList = state.mainList.filter(v => v.title.includes(keyword));
+    },
   },
 });
 

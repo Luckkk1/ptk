@@ -18,7 +18,6 @@ export default function Home(props) {
         'Content-Type': 'application/json',
       },
     });
-    const data = await res.json();
   };
 
   useEffect(() => {

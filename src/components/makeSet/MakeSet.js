@@ -145,7 +145,6 @@ const MakeSet = () => {
           value={opp}
           onClick={oppChangeClickHandler}
           readOnly
-          // disabled
         />
       </div>
       <div className={classes.btnControl}>

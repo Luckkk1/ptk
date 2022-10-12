@@ -108,7 +108,7 @@
 
 @media screen and (min-width: 480px) and (max-width: 1024px) {
   .makeSet {
-    margin: 5em 2%;
+    margin: 5em 20%;
   }
 
   .colorControl input {

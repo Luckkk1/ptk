@@ -7,7 +7,6 @@ import MakeSet from '../../src/components/makeSet/MakeSet';
 import { colorActions } from '../../src/store/color-slice';
 
 export default function Home(props) {
-  // const [colors, setColors] = useState(props.colorSet);
   const dispatch = useDispatch();
 
   const postColorSet = async colorSet => {
