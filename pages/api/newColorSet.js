@@ -1,12 +1,12 @@
 import { MongoClient, ObjectId } from 'mongodb';
 
 const handler = async (req, res) => {
+  const MONGODBKEY = process.env.REACT_APP_MONGODB_KEY;
+
   if (req.method === 'POST') {
     const data = req.body;
 
-    const client = await MongoClient.connect(
-      'mongodb+srv://ysLee:4P7m0iViVrrr27eu@pickthecolor.mveb3q5.mongodb.net/colorSet?retryWrites=true&w=majority'
-    );
+    const client = await MongoClient.connect(MONGODBKEY);
 
     const db = client.db();
 
@@ -23,9 +23,7 @@ const handler = async (req, res) => {
   if (req.method === 'PUT') {
     const data = req.body;
 
-    const client = await MongoClient.connect(
-      'mongodb+srv://ysLee:4P7m0iViVrrr27eu@pickthecolor.mveb3q5.mongodb.net/colorSet?retryWrites=true&w=majority'
-    );
+    const client = await MongoClient.connect(MONGODBKEY);
 
     const db = client.db();
 
@@ -48,9 +46,7 @@ const handler = async (req, res) => {
     res.status(201).json({ message: 'Like 1+' });
   }
   if (req.method === 'GET') {
-    const client = await MongoClient.connect(
-      'mongodb+srv://ysLee:4P7m0iViVrrr27eu@pickthecolor.mveb3q5.mongodb.net/colorSet?retryWrites=true&w=majority'
-    );
+    const client = await MongoClient.connect(MONGODBKEY);
 
     const db = client.db();
 

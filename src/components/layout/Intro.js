@@ -23,7 +23,12 @@ const Intro = () => {
     <div className={classes.introSection}>
       <h2>Welcome to the ColorFalls</h2>
       <p>You can find color palette of various topics.</p>
-      <input type="text" placeholder="Search" ref={inputRef} />
+      <input
+        type="text"
+        placeholder="Still under development"
+        ref={inputRef}
+        disabled
+      />
     </div>
   );
 };
