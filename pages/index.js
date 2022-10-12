@@ -53,7 +53,8 @@ export async function loadKey() {
 }
 
 export const getStaticProps = async () => {
-  const client = await MongoClient.connect(loadKey());
+  const key = loadKey();
+  const client = await MongoClient.connect(key);
 
   const db = client.db();
 
